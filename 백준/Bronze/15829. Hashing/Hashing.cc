@@ -21,13 +21,16 @@ int main() {
     
     string s;
     cin >> s;
-    
+  
+    ll mod = 1234567891;
     ll value = 0;
     ll hash = 1;
-    for(int i=0;i<T;i++) {
-        int alphavalue = (s[i]-'a'+1);
-        value += hash * alphavalue;
-        hash *= 31;
+
+    for (int i = 0; i < T; i++) {
+        int alphavalue = (s[i] - 'a' + 1);
+        value = (value + alphavalue * hash) % mod;
+        hash = (hash * 31) % mod;
     }
-    cout << value;
+
+    cout << value << "\n";
 }

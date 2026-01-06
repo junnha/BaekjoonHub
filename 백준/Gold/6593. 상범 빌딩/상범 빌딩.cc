@@ -59,7 +59,7 @@ void solve() {
                 int ny = curY + dy[dir];
                 if(nh<0||nx<0||ny<0) continue;
                 if(nh>=L||nx>=R||ny>=C) continue;
-                if(board[nh][nx][ny] == '#'|| dist[nh][nx][ny]!=-1) continue;
+                if(board[nh][nx][ny] == '#'|| dist[nh][nx][ny]>0) continue;
                 dist[nh][nx][ny] = dist[curH][curX][curY] + 1;
 
                 if(board[nh][nx][ny] == 'E') {

@@ -17,7 +17,7 @@ using namespace std;
 int N;
 int arr[1000005];
 vector<int> tmp, uni;
-int main(void){
+int main(){
     fastIO;
     cin >> N;
     for(int i=0;i<N;i++){

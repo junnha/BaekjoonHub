@@ -1,60 +1,55 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<string>
+#include<list>
+#include<stack>
+#include<queue>
+#include<deque>
+#include <algorithm>
+#include <cmath> 
+#include<utility>
+#include<map>
 using namespace std;
+int s[1002][1002];
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin >> n;
+    int d = 0;
+    int A1, B1, A2, B2;
 
-#define ll long long
-#define pii pair<int,int>
-#define pll pair<ll,ll>
-#define vi vector<int>
-#define vl vector<ll>
-
-#define all(v) (v).begin(), (v).end()
-#define rall(v) (v).rbegin(), (v).rend()
-#define minpq(type) priority_queue<type, vector<type>, greater<type>>
-#define maxpq(type) priority_queue<type>
-
-#define fastIO ios::sync_with_stdio(false); cin.tie(nullptr)
-
-int N;
-int board[1005][1005];
-int proi;
-int projj;
-int stui;
-int stuj;
-
-void solve() {
-    cin >> N;
-    for(int i=0;i<N;i++) {
-        for(int j=0;j<N;j++) {
-            cin >> board[i][j];
-            if(board[i][j]==5) {
-                proi = i;
-                projj = j;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> s[i][j];
+            if (s[i][j] == 2){
+                A1 = i;
+                B1 = j;
             }
-            if(board[i][j]==2) {
-                stui = i;
-                stuj = j;
+            if (s[i][j] == 5) {
+                A2 = i;
+                B2 = j;
             }
-        }
+        } 
     }
-    int r1 = min(proi, stui);
-    int r2 = max(proi, stui);
-    int c1 = min(projj, stuj);
-    int c2 = max(projj, stuj);
+
+    int A = (A1 - A2);
+    int B = (B1 - B2);
+    
+    int a1 = min(A1, A2);
+    int a2 = max(A1, A2);
+    int b1 = min(B1, B2);
+    int b2 = max(B1, B2);
+
+    d = A*A + B*B;
 
     int cnt = 0;
-    for (int i = r1; i <= r2; i++) {
-        for (int j = c1; j <= c2; j++) {
-            if (board[i][j] == 1) cnt++;
+
+    for (int i = a1; i <= a2; i++) {
+        for (int j = b1; j <= b2; j++) {
+            if (s[i][j] == 1) cnt++;
+            }
         }
-    }
-    int s = (proi-stui)*(proi-stui);
-    int v = (projj-stuj)*(projj-stuj);
-    if((s+v)>=25 && cnt >= 3) {
+    if(cnt >=3 && d>=25) {
         cout << 1;
     } else cout << 0;
-}
-
-int main() {
-    fastIO;
-    solve();
 }
